@@ -10,14 +10,14 @@ class LongProcessingService {
 
     private val log = LoggerFactory.getLogger(javaClass)
 
-    fun process() {
-        TimeUnit.MILLISECONDS.sleep(550)
+    fun process(sleep: Long = 550L) {
+        TimeUnit.MILLISECONDS.sleep(sleep)
         log.info("Long heavy process was done")
     }
 
     @Async
-    fun processAsync() {
-        TimeUnit.MILLISECONDS.sleep(550)
+    fun processAsync(sleep: Long = 1000L) {
+        TimeUnit.MILLISECONDS.sleep(sleep)
         log.info("Long heavy async process was done")
     }
 
