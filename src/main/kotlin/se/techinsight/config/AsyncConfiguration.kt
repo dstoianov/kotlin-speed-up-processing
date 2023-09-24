@@ -22,4 +22,16 @@ class AsyncConfiguration {
         return executor
     }
 
+    @Bean("eventExecutor")
+    fun asyncEventExecutor(): TaskExecutor {
+        val executor = ThreadPoolTaskExecutor().apply {
+            corePoolSize = 4
+            maxPoolSize = 10
+            queueCapacity = 15
+        }
+        executor.setThreadNamePrefix("EventExecutor-")
+        executor.initialize()
+        return executor
+    }
+
 }
